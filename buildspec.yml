@@ -1,0 +1,35 @@
+version: 0.2
+
+env:
+  variables:
+    DOCKER_IMAGE_TAG: "senzing/test"
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - apt-get update -y
+    finally:
+      - echo This always runs even if the update or install command fails 
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+    finally:
+      - echo This always runs even if the login command fails 
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - docker build -t $DOCKER_IMAGE_TAG .
+      - echo Build completed on `date`
+    finally:
+      - echo This always runs even if the install command fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Post Build started on `date`
+      - docker save $DOCKER_IMAGE_TAG > test.tar
+      - echo Post Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
