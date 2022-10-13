@@ -8,6 +8,7 @@ phases:
   install:
     commands:
       - apt-get update -y
+      - export AWS_ACCOUNT_ID=$(echo $CODEBUILD_BUILD_ARN | cut -d ":" -f 5)
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
