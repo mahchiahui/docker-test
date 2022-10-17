@@ -3,7 +3,7 @@ FROM ${BASE_IMAGE}
 
 ENV REFRESHED_AT=2022-09-27
 
-LABEL Name="senzing/test" \
+LABEL Name="senzing/test \
       Maintainer="support@senzing.com" \
       Version="1.0.5"
 
@@ -26,4 +26,4 @@ USER 1001
 # Runtime execution.
 
 WORKDIR /app
-CMD ["/app/sleep-infinity.sh]
+CMD ["/app/sleep-infinity.sh"]
