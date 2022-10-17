@@ -26,4 +26,4 @@ USER 1001
 # Runtime execution.
 
 WORKDIR /app
-CMD ["/app/sleep-infinity.sh"]
+CMD ["/app/sleep-infinity.sh]
